@@ -1,0 +1,29 @@
+# Ignorer les fichiers spécifiques à Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Ignorer les environnements virtuels
+venv/
+env/
+*.env
+
+# Ignorer les configurations de l'éditeur
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Fichiers de dépendance
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Ignorer les fichiers de logs et les CSV temporaires
+*.log
+timer_app/data/times.csv
+
+# Autres fichiers temporaires
+*.tmp
+.DS_Store
