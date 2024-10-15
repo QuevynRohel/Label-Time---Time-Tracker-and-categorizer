@@ -1,5 +1,5 @@
 import tkinter as tk
-import time  # Import manquant pour le chronomètre
+import time
 from controllers.csv_controller import CSVController
 from utils.constants import VIEW_MAIN_MENU
 from views.navigation import navigate_to
@@ -17,39 +17,52 @@ class SessionView:
         self.clear_window()
         self.add_navigation_bar()
 
+        # Style global
+        bg_color = "#f5f5f5"
+        btn_color = "#4CAF50"
+        self.root.configure(bg=bg_color)
+
         # Conteneur centré pour les éléments principaux
-        container = tk.Frame(self.root)
+        container = tk.Frame(self.root, bg=bg_color)
         container.place(relx=0.5, rely=0.5, anchor="center")
 
-        # Minuterie affichée en grand en haut
-        self.timer_label = tk.Label(container, text="0:00:00", font=("Arial", 36, "bold"))
-        self.timer_label.pack(pady=(0, 20), anchor="center")
+        # Minuterie avec style moderne
+        timer_frame = tk.Frame(container, bd=2, relief="groove", bg="white", padx=20, pady=10)
+        self.timer_label = tk.Label(timer_frame, text="0:00:00", font=("Helvetica", 36, "bold"), fg="#333", bg="white")
+        self.timer_label.pack(pady=10)
+        timer_frame.pack(pady=(0, 20), fill="x", padx=20, anchor="center")
 
-        # Conteneur pour les boutons Play/Pause et Stop côte à côte
-        button_frame = tk.Frame(container)
+        # Conteneur pour les boutons Play/Pause et Stop côte à côte avec styles
+        button_frame = tk.Frame(container, bg=bg_color)
         button_frame.pack(anchor="center")
 
-        # Bouton Play/Pause avec icône Unicode et état désactivé par défaut
-        self.btn_play_pause = tk.Button(button_frame, text="\u25B6 Play", command=self.toggle_timer, state="disabled", font=("Arial", 14))
+        self.btn_play_pause = tk.Button(
+            button_frame, text="\u25B6 Play", command=self.toggle_timer, state="disabled",
+            font=("Helvetica", 14), fg="white", bg=btn_color, activebackground="#45a049",
+            relief="flat", width=8, padx=5, pady=5, cursor="hand2"
+        )
         self.btn_play_pause.grid(row=0, column=0, padx=(0, 10))
 
-        # Bouton Stop avec icône Unicode, également désactivé par défaut
-        self.btn_stop = tk.Button(button_frame, text="\u25A0 Stop", command=self.stop_timer, state="disabled", font=("Arial", 14))
+        self.btn_stop = tk.Button(
+            button_frame, text="\u25A0 Stop", command=self.stop_timer, state="disabled",
+            font=("Helvetica", 14), fg="white", bg="#f44336", activebackground="#e53935",
+            relief="flat", width=8, padx=5, pady=5, cursor="hand2"
+        )
         self.btn_stop.grid(row=0, column=1)
 
-        # Champs "Catégorie" et "Description" en bas
-        tk.Label(container, text="Catégorie").pack(anchor="center", pady=(20, 5))
-        category_entry = tk.Entry(container, textvariable=self.category, width=50)
+        # Champs "Catégorie" et "Description" en bas avec style moderne
+        tk.Label(container, text="Catégorie", font=("Helvetica", 12), bg=bg_color).pack(anchor="center", pady=(20, 5))
+        category_entry = tk.Entry(container, textvariable=self.category, width=50, font=("Helvetica", 12))
         category_entry.pack(pady=5)
         
-        # Ajouter le détecteur de frappe après la création du bouton
+        # Activer le bouton Play dès que l'utilisateur tape dans le champ
         category_entry.bind("<KeyRelease>", self.check_category_entry)
 
         # Chargement des boutons de catégories existantes
         self.load_category_buttons(container)
 
-        tk.Label(container, text="Description").pack(anchor="center", pady=(20, 5))
-        description_entry = tk.Text(container, width=50, height=4)
+        tk.Label(container, text="Description", font=("Helvetica", 12), bg=bg_color).pack(anchor="center", pady=(20, 5))
+        description_entry = tk.Text(container, width=50, height=4, font=("Helvetica", 12))
         description_entry.pack(pady=5)
 
     def add_navigation_bar(self):
@@ -60,10 +73,23 @@ class SessionView:
         btn_back.pack(side="right", padx=10)
 
     def load_category_buttons(self, container):
+        # Chargement des catégories existantes avec bouton
         controller = CSVController()
+        categories_frame = tk.Frame(container, bg="#f5f5f5")
+        categories_frame.pack(pady=10)
+
         for cat in controller.get_categories():
-            btn = tk.Button(container, text=cat, command=lambda c=cat: self.category.set(c))
-            btn.pack(pady=2)
+            btn = tk.Button(
+                categories_frame, text=cat, command=lambda c=cat: self.select_category(c),
+                font=("Helvetica", 10), bg="#ddd", fg="#333", activebackground="#ccc",
+                relief="flat", padx=10, pady=5, cursor="hand2"
+            )
+            btn.pack(side="left", padx=5)
+
+    def select_category(self, category):
+        # Sélectionne la catégorie et active le bouton Play
+        self.category.set(category)
+        self.check_category_entry(None)
 
     def check_category_entry(self, event):
         # Active le bouton Play dès qu'une catégorie est entrée
@@ -96,7 +122,6 @@ class SessionView:
         self.timer_running = False
         if description is None:
             description = self.description.get()
-        # Appel à save_entry au lieu de save_session
         CSVController().save_entry(self.category.get(), description, int(self.elapsed_time))
         self.reset_fields()
 
