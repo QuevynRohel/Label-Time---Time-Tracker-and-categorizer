@@ -137,10 +137,10 @@ class SessionView:
         self.timer_running = False
         description = self.description_entry.get("1.0", tk.END).strip()
         CSVController().save_entry(self.category.get(), description, int(self.elapsed_time))
-        self.reset_fields()
         # Afficher le message de succès avec les informations réelles de la session
         self.show_message(_("Temps de {time} sur '{category}' enregistré avec succès !").format(
             time=self.format_time(self.elapsed_time), category=self.category.get()), bg_color="#4CAF50")
+        self.reset_fields()
 
     def show_message(self, message, bg_color="#ffeb3b"):
         """Affiche un message dans le bandeau avec une couleur de fond."""

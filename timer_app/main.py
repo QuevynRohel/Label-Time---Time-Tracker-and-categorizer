@@ -8,3 +8,6 @@ if __name__ == "__main__":
     root.minsize(600, 800)
     navigate_to(root, VIEW_MAIN_MENU)
     root.mainloop()
+
+
+    

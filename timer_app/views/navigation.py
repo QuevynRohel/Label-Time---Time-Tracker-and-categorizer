@@ -6,8 +6,8 @@ def navigate_to(root, view_name):
         from views.main_menu import MainMenu
         MainMenu(root)
     elif view_name == VIEW_STATS:
-        from views.stats_view import StatsView
-        StatsView(root)
+        from views.stats_view import StatisticsView
+        StatisticsView(root)
     elif view_name == VIEW_ADD_ENTRY:
         from views.add_entry_view import AddEntryView
         AddEntryView(root)
