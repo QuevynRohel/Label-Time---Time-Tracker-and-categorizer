@@ -14,3 +14,6 @@ def navigate_to(root, view_name):
     elif view_name == VIEW_SESSION:
         from views.session_view import SessionView
         SessionView(root)
+    elif view_name == VIEW_OPTIONS:  # Redirige vers la vue Options
+        from views.options import OptionsView
+        OptionsView(root)
