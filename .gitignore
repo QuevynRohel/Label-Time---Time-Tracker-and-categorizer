@@ -23,6 +23,7 @@ poetry.lock
 # Ignorer les fichiers de logs et les CSV temporaires
 *.log
 timer_app/data/times.csv
+timer_app/data/
 
 # Autres fichiers temporaires
 *.tmp

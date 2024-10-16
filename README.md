@@ -1,20 +1,44 @@
-# Améliorations à apporter:
-Page statistiques:
-- Scroller la page en gardant statique le mois et l'année actuelle avec ses boutons de défilement et la barre de retour
-- Trier dans chaque jour du calendrier les heures de manière décroissante.
+
+# What is that tool ?
+This tool was made for do-ers who are ready to invest time and effort on an higher goal. 
+I believe that knowing at a glance the efforts you put on something can really make the difference for achievement. 
+
+- You will be able to see what you did this day and every other day, month and life easily.
+- Set your own life objectives and start labeling and tracking time. 
+
+# How does it work ?
+You can track your work time and label it.
+First you enter a category of work and start the chronometer, and when you are done, you stop it. 
+![Basic usage of a session](documentation/Usage.gif)
+
+Then you can find your cumulated times for the day.
+![Demo of calendar](documentation/Stats.gif.gif)
+This is what has the most value to me especially when you choose the right labels and do not split to much.
 
 
-Page Session :
-- Ajouter un bouton qui met en mode statique (par dessus tout autre processus) On verrait pause, stop, le temps passé et le moyen de repasser en vue normale. Faire en sorte de pouvoir le docker où on veut et redimensionner si on veut.
-- Quand il y a pleins de catégories, elles ne vont qu'en horizontal. Ajouter un système de grille. et un bouton voir plus. Puis trier par les plus récemment utilisés. (il y a de fortes chances que l'on en ait encore besoin bientôt)
-- Si on s'approche des 50 labels, faire un système de recherche et de complétion automatique en fonction de ce qu'on connait. 
 
-Options :
-- Pouvoir choisir les couleurs de ses catégories soi-même dans les options. 
-- Ajouter un drapeau pour les traductions et fixer l'affichage fr en actuel.
+# What you could do with that ? 
+- Decide that you are going to work 100h on your arts skill this month and track it. 
+- Decide that you are going to do sport for 30 min per day and track it.
+- Get to know where you actually put your time while working.
+- Track your time has a freelancer or on a task for work that you bill hourly.
 
-Global:
-- Pouvoir détecter automatiquement un appel quand on est connecté avec microsoft pour mettre sur pause.
-- Pouvoir modifier/supprimer une ligne passée ??? 
 
-- Traduire l'ensemble de l'app. Calendrier externe inclut.
+# Install
+- Download this has a zip and extract it anywhere you see fit.
+- Have python installed.
+ - windows :`pip install -r requirements.txt` 
+ - mac & linux `pip3 install -r requirements.txt` 
+
+# Compatibility
+- Should work on Linux, MacOs and Windows just fine. But only tested it on Windows so far.
+
+# Data
+You can configure where the csv log will be for your calendar and it's name in the `Parameters` section.
+
+
+# It is open source. 
+- Do not hesitate to improve on that. Please reference me if you launch a product, that would be much appreciated.
+
+MIT License
+Copyright (c) 2024 Quevyn Rohel
