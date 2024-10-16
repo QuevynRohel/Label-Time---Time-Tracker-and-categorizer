@@ -12,7 +12,7 @@ First you enter a category of work and start the chronometer, and when you are d
 ![Basic usage of a session](documentation/Usage.gif)
 
 Then you can find your cumulated times for the day.
-![Demo of calendar](documentation/Stats.gif.gif)
+![Demo of calendar](documentation/Stats.gif)
 This is what has the most value to me especially when you choose the right labels and do not split to much.
 
 
