@@ -7,15 +7,17 @@ I believe that knowing at a glance the efforts you put on something can really m
 - Set your own life objectives and start labeling and tracking time. 
 
 # How does it work ?
-You can track your work time and label it.
-First you enter a category of work and start the chronometer, and when you are done, you stop it. 
+- You can track your work time and label it.
+- First you enter a category of work and start the chronometer, and when you are done, you stop it. 
 ![Basic usage of a session](documentation/Usage.gif)
 
-Then you can find your cumulated times for the day.
+- Then you can find your cumulated times for the day.
+- This is what has the most value to me especially when you choose the right labels and do not split to much.
 ![Demo of calendar](documentation/Stats.gif)
-This is what has the most value to me especially when you choose the right labels and do not split to much.
 
 
+- You can also add an entry for the past time has all your goals are not in front of a computer. 
+![Demo of add an entry afterward](documentation/Entry.gif)
 
 # What you could do with that ? 
 - Decide that you are going to work 100h on your arts skill this month and track it. 
@@ -34,11 +36,10 @@ This is what has the most value to me especially when you choose the right label
 - Should work on Linux, MacOs and Windows just fine. But only tested it on Windows so far.
 
 # Data
-You can configure where the csv log will be for your calendar and it's name in the `Parameters` section.
-
+./timer_app/data/ contains your csv file in case you want it.
 
 # It is open source. 
-- Do not hesitate to improve on that. Please reference me if you launch a product, that would be much appreciated.
+- Do not hesitate to improve on that. Please reference me if you do, that would be much appreciated.
 
 MIT License
 Copyright (c) 2024 Quevyn Rohel
