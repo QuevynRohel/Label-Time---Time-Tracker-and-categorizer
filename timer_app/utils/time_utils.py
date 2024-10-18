@@ -13,6 +13,25 @@ def format_time_compact(seconds):
     if seconds >= 3600:
         hours = seconds // 3600
         minutes = (seconds % 3600) // 60
+        if minutes == 0:
+            return f"{int(hours)}h"    
         return f"{int(hours)}h{int(minutes):02}"
     minutes = seconds // 60
     return f"{int(minutes)}min"
+
+
+def format_time_minimalistic(seconds):
+    """Format time as 1h05 or 1m30 if more than 1 hour"""
+    if seconds >= 3600:
+        hours = seconds // 3600
+        minutes = (seconds % 3600) // 60
+        if minutes == 0:
+            return f"{int(hours)}h"
+        return f"{int(hours)}h{int(minutes):02}"
+    minutes = seconds // 60
+    seconds = seconds % 60
+    if seconds == 0:
+        return f"{int(minutes)}m"    
+    if minutes == 0:
+        return f"{int(seconds)}s"    
+    return f"{int(minutes)}m{int(seconds):02}"
