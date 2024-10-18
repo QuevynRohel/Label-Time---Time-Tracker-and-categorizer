@@ -27,4 +27,8 @@ timer_app/data/
 
 # Autres fichiers temporaires
 *.tmp
-.DS_Store
+.DS_Storebuild/
+
+dist/
+build/
+timer_app/build/

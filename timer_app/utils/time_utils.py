@@ -6,7 +6,7 @@ def format_time(seconds):
         return f"{int(hours)}h{int(minutes)}min"
     minutes = seconds // 60
     seconds = seconds % 60
-    return f"{int(minutes)}min {int(seconds):02}sec"
+    return f"{int(minutes)}min{int(seconds):02}sec"
 
 def format_time_compact(seconds):
     """Format time in compact style: '1h45'."""

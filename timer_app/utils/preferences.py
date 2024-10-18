@@ -12,5 +12,14 @@ def load_preferences():
 
 def save_preferences(preferences):
     """Enregistre les préférences de langue dans preferences.json."""
+    # Crée le répertoire si nécessaire
+    os.makedirs(os.path.dirname(PREFERENCES_FILE), exist_ok=True)
+    # Écrit les préférences dans le fichier JSON
     with open(PREFERENCES_FILE, "w", encoding="utf-8") as file:
-        json.dump(preferences, file)
+        json.dump(preferences, file, ensure_ascii=False, indent=4)
+
+# Initialisation des préférences pour garantir l'existence du fichier
+def initialize_preferences():
+    """Vérifie l'existence du fichier preferences.json et crée des valeurs par défaut si nécessaire."""
+    if not os.path.exists(PREFERENCES_FILE):
+        save_preferences({"language": "en"})

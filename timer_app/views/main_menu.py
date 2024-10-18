@@ -14,17 +14,35 @@ class MainMenu:
             widget.destroy()
 
     def create_main_menu(self):
-        tk.Label(self.root, text=_("TIME TRACKER"), font=("Arial", 16)).pack(pady=10)
+        # Barre d'options avec une roue crantée en haut à droite
+        top_bar = tk.Frame(self.root, height=100)
+        top_bar.pack(fill="x", side="top")
+        
+        # Icône de roue crantée pour accéder aux options
+        btn_options = tk.Button(top_bar, text="⚙", font=("Arial", 16), bg="#f5f5f5", relief="flat", command=lambda: navigate_to(self.root, VIEW_OPTIONS), cursor="hand2")
+        btn_options.pack(side="right", padx=10, pady=5)
 
-        btn_stats = tk.Button(self.root, text=_("Statistiques"), command=lambda: navigate_to(self.root, VIEW_STATS))
-        btn_stats.pack(pady=10)
+        # Conteneur centré pour les boutons principaux
+        container = tk.Frame(self.root)
+        container.place(relx=0.5, rely=0.5, anchor="center")
 
-        btn_add_entry = tk.Button(self.root, text=_("Ajouter une entrée"), command=lambda: navigate_to(self.root, VIEW_ADD_ENTRY))
-        btn_add_entry.pack(pady=10)
+        # Texte d'encouragement
+        encouragement_label = tk.Label(container, text=_("Accomplissez de grandes choses aujourd'hui !"), font=("Arial", 14), fg="black")
+        encouragement_label.pack(pady=10)
 
-        btn_start_session = tk.Button(self.root, text=_("Démarrer une session"), command=lambda: navigate_to(self.root, VIEW_SESSION))
+        # Gros boutons pour "Statistiques" et "Démarrer une session"
+        btn_start_session = tk.Button(container, text=_("⚡ Démarrer une session"), font=("Arial", 14), width=40, height=2, bg="#4a90e2", fg="white", relief="flat", cursor="hand2")
         btn_start_session.pack(pady=10)
+        btn_start_session.config(command=lambda: navigate_to(self.root, VIEW_SESSION))
 
-        # Bouton pour accéder aux options
-        btn_options = tk.Button(self.root, text=_("Options"), command=lambda: navigate_to(self.root, VIEW_OPTIONS))
-        btn_options.pack(pady=10)
+        btn_stats = tk.Button(container, text=_("📊 Statistiques"), font=("Arial", 14), width=40, height=2, bg="#4a90e2", fg="white", relief="flat", cursor="hand2")
+        btn_stats.pack(pady=10)
+        btn_stats.config(command=lambda: navigate_to(self.root, VIEW_STATS))
+        # Bouton flottant en bas à droite pour "Ajouter une entrée"
+        btn_add_entry = tk.Button(self.root, text="+", font=("Arial", 30, "bold"), bg="#27ae60", fg="white", relief="flat", width=4, height=2, cursor="hand2", borderwidth=0)
+        btn_add_entry.config(command=lambda: navigate_to(self.root, VIEW_ADD_ENTRY))
+        
+        # Ajout d'une bordure blanche ronde au bouton "+", placé en bas à droite
+        btn_add_entry.place(relx=0.9, rely=0.9, anchor="center")
+        btn_add_entry.config(highlightbackground="white", highlightthickness=10)
+

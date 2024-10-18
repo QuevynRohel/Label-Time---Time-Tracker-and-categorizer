@@ -1,13 +1,15 @@
 import tkinter as tk
-from tkinter import ttk
+try:
+    from tkinter import ttk
+except ImportError:
+    import tkinter.ttk as ttk
 from datetime import datetime, timedelta
-from tkcalendar import DateEntry
 from controllers.csv_controller import CSVController
 from utils.constants import VIEW_MAIN_MENU
 from utils.translations import _
 from utils.time_utils import format_time
 from views.navigation import navigate_to
-from views.style import configure_dateentry_style
+
 
 class AddEntryView:
     def __init__(self, root, date=None):
@@ -21,12 +23,13 @@ class AddEntryView:
 
     def set_date_and_time(self, date):
         """Définit la date et l'heure dans les widgets."""
-        self.date_picker.set_date(date)
+        self.date_entry.delete(0, "end")
+        self.date_entry.insert(0, date.strftime("%Y-%m-%d"))
         self.time_picker.delete(0, "end")
         self.time_picker.insert(0, date.strftime("%H"))
         self.minute_picker.delete(0, "end")
         self.minute_picker.insert(0, date.strftime("%M"))
-        
+
     def clear_window(self):
         for widget in self.root.winfo_children():
             widget.destroy()
@@ -48,23 +51,37 @@ class AddEntryView:
 
         # Initialiser les variables nécessaires
         self.category = tk.StringVar()
-        self.session_seconds = tk.StringVar(value="0")
-        self.time_unit = tk.StringVar(value="minutes")  # Par défaut en minutes
 
-        # Champ Temps avec unité de temps
+        # Section Temps avec Spinbox pour HH, MM, SS
+        tk.Label(container, text=_("Temps"), font=("Helvetica", 10)).pack(anchor="w", pady=(10, 5))
+
         time_frame = tk.Frame(container)
         time_frame.pack(fill="x", pady=(10, 5))
 
-        time_entry = tk.Entry(time_frame, textvariable=self.session_seconds, width=10, font=("Helvetica", 12), relief="flat", highlightbackground="#ddd", highlightthickness=1)
-        time_entry.pack(fill="x", padx=10, pady=(5, 0)) 
+        # Configuration du grid pour créer un espacement type "space-between"
+        time_frame.columnconfigure(0, weight=1)  # Espacement à gauche
+        time_frame.columnconfigure(2, weight=1)  # Espacement entre heures et minutes
+        time_frame.columnconfigure(4, weight=1)  # Espacement entre minutes et secondes
+        time_frame.columnconfigure(6, weight=1)  # Espacement à droite
 
-        # Menu déroulant pour les unités de temps, stylé comme les boutons de catégories
-        unit_selector = ttk.Combobox(time_frame, textvariable=self.time_unit, values=["secondes", "minutes"], state="readonly", font=("Helvetica", 10))
-        unit_selector.pack(fill="x", padx=10, pady=5)
-        unit_selector.configure(style="TCombobox")
+        # Spinbox pour les heures
+        self.hours_spinbox = tk.Spinbox(time_frame, from_=0, to=23, width=3, font=("Helvetica", 12), format="%02.0f", relief="flat")
+        self.hours_spinbox.grid(row=0, column=1, padx=(10, 10), sticky="ew")
+        tk.Label(time_frame, text="h", font=("Helvetica", 12)).grid(row=0, column=2, padx=(5, 5), sticky="ew")
+
+        # Spinbox pour les minutes
+        self.minutes_spinbox = tk.Spinbox(time_frame, from_=0, to=59, width=3, font=("Helvetica", 12), format="%02.0f", relief="flat")
+        self.minutes_spinbox.grid(row=0, column=3, padx=(10, 10), sticky="ew")
+        tk.Label(time_frame, text="min", font=("Helvetica", 12)).grid(row=0, column=4, padx=(5, 5), sticky="ew")
+
+        # Spinbox pour les secondes
+        self.seconds_spinbox = tk.Spinbox(time_frame, from_=0, to=59, width=3, font=("Helvetica", 12), format="%02.0f", relief="flat")
+        self.seconds_spinbox.grid(row=0, column=5, padx=(10, 10), sticky="ew")
+        tk.Label(time_frame, text="sec", font=("Helvetica", 12)).grid(row=0, column=6, padx=(5, 5), sticky="ew")
+
 
         # Section Catégorie accomplie et entrée pour catégorie
-        tk.Label(container, text=_("Catégorie accomplie"), font=("Helvetica", 10)).pack(anchor="w", pady=(10, 5))
+        tk.Label(container, text=_("Catégorie accomplie"), font=("Helvetica", 10)).pack(anchor="w", pady=(30, 5))
         category_entry = tk.Entry(container, textvariable=self.category, width=40, font=("Helvetica", 12), relief="flat", highlightbackground="#ddd", highlightthickness=1)
         category_entry.pack(fill="x", padx=10, pady=5)
 
@@ -72,6 +89,8 @@ class AddEntryView:
         self.load_category_buttons(container)
 
         # Ligne de la date et heure, centrée avec style de bouton
+        tk.Label(container, text=_("Date"), font=("Helvetica", 10)).pack(anchor="w", pady=(30, 5))
+
         datetime_frame = tk.Frame(container, relief="flat", padx=5, pady=5)
         datetime_frame.pack(fill="x", pady=(10, 5))
 
@@ -79,14 +98,15 @@ class AddEntryView:
         datetime_centered_frame = tk.Frame(datetime_frame)
         datetime_centered_frame.pack(anchor="center")
 
-        # Contenu de la ligne de date et heure
-        tk.Label(datetime_centered_frame, text=_("Le "), font=("Helvetica", 12)).grid(row=0, column=0, sticky="w")
-        self.date_picker = DateEntry(datetime_centered_frame, width=12, background='darkblue', foreground='white', font=("Helvetica", 12))
-        self.date_picker.set_date(datetime.now())
-        self.date_picker.grid(row=0, column=1, padx=(5, 10))
+        # Contenu de la ligne de date
 
-        configure_dateentry_style(self.date_picker)
+        tk.Label(datetime_centered_frame, text=_("Le"), font=("Helvetica", 12)).grid(row=0, column=0, sticky="w")
+        self.date_entry = tk.Entry(datetime_centered_frame, width=15, font=("Helvetica", 12), relief="flat", highlightbackground="#ddd", highlightthickness=1)
+        current_date = datetime.now().strftime("%Y-%m-%d")
+        self.date_entry.insert(0, current_date)
+        self.date_entry.grid(row=0, column=1, padx=(5, 10))
 
+        # Contenu de l'heure
         tk.Label(datetime_centered_frame, text=_(" à "), font=("Helvetica", 12)).grid(row=0, column=2, sticky="w")
         self.time_picker = tk.Spinbox(datetime_centered_frame, from_=0, to=23, width=3, font=("Helvetica", 12), format="%02.0f", relief="flat", highlightbackground="#ddd", highlightthickness=1)
         self.time_picker.grid(row=0, column=3, padx=(5, 10))
@@ -95,15 +115,13 @@ class AddEntryView:
         self.minute_picker = tk.Spinbox(datetime_centered_frame, from_=0, to=59, width=3, font=("Helvetica", 12), format="%02.0f", relief="flat", highlightbackground="#ddd", highlightthickness=1)
         self.minute_picker.grid(row=0, column=5, padx=(5, 10))
 
-        # Conteneur principal pour les boutons
+        # Bouton pour définir des dates rapides
         date_buttons_frame = tk.Frame(container)
         date_buttons_frame.pack(fill="x", pady=(10, 5))
 
-        # Frame intermédiaire pour centrer les boutons horizontalement
         date_buttons_centered_frame = tk.Frame(date_buttons_frame)
         date_buttons_centered_frame.pack(anchor="center")
 
-        # Ajout des boutons dans le frame centré
         for index, (text, offset) in enumerate([("Avant-hier", -2), ("Hier", -1), ("Maintenant", 0)]):
             command = self.set_to_now if offset == 0 else lambda offset=offset: self.set_date_offset(offset)
             btn = tk.Button(
@@ -132,7 +150,6 @@ class AddEntryView:
         btn_back.pack(side="right", padx=10, pady=5)
 
     def load_category_buttons(self, container):
-        # Charger les catégories existantes
         existing_categories = CSVController().get_categories()
         if existing_categories:
             categories_frame = tk.Frame(container)
@@ -141,67 +158,79 @@ class AddEntryView:
                 btn = tk.Button(categories_frame, text=cat, command=lambda c=cat: self.category.set(c), font=("Helvetica", 10), bg="#ddd", fg="#333", activebackground="#ccc", relief="flat", padx=10, pady=5, cursor="hand2")
                 btn.pack(side="left", padx=5)
 
-    def update_time_label(self, event=None):
-        """Mise à jour du label pour les unités de temps selon la sélection."""
-        selected_unit = self.time_unit.get()
-        label_text = _("Temps en minutes") if selected_unit == "minutes" else _("Temps en secondes")
-        self.time_label.config(text=label_text)
+    def validate_date(self, date_text):
+        """Valide et formate la date selon la locale."""
+        formats_fr = ["%d/%m/%Y", "%d-%m-%Y", "%d %m %Y"]
+        formats_intl = ["%Y-%m-%d"]
+        for fmt in formats_fr if _("locale") == "fr" else formats_intl:
+            try:
+                return datetime.strptime(date_text, fmt).strftime("%Y-%m-%d")
+            except ValueError:
+                continue
+        return None
 
     def set_date_offset(self, days):
-        """Ajuste la date en fonction d'un décalage en jours."""
         target_date = datetime.now() + timedelta(days=days)
-        self.date_picker.set_date(target_date)
+        self.date_entry.delete(0, "end")
+        self.date_entry.insert(0, target_date.strftime("%Y-%m-%d"))
         self.time_picker.delete(0, "end")
         self.time_picker.insert(0, target_date.strftime("%H"))
         self.minute_picker.delete(0, "end")
         self.minute_picker.insert(0, target_date.strftime("%M"))
-        
+
     def set_to_now(self):
-        """Définit la date, heure et minute aux valeurs actuelles."""
         now = datetime.now()
-        self.date_picker.set_date(now)
+        self.date_entry.delete(0, "end")
+        self.date_entry.insert(0, now.strftime("%Y-%m-%d"))
         self.time_picker.delete(0, "end")
         self.time_picker.insert(0, now.strftime("%H"))
         self.minute_picker.delete(0, "end")
         self.minute_picker.insert(0, now.strftime("%M"))
 
     def save_entry(self, description):
-        # Convertir le temps en secondes si nécessaire
         try:
-            time_value = int(self.session_seconds.get())
-            if self.time_unit.get() == "minutes":
-                time_value *= 60  # Convertir les minutes en secondes
+            hours = int(self.hours_spinbox.get())
+            minutes = int(self.minutes_spinbox.get())
+            seconds = int(self.seconds_spinbox.get())
+            total_seconds = hours * 3600 + minutes * 60 + seconds
 
-            # Validation des entrées
+            date_text = self.date_entry.get().strip()
+            valid_date = self.validate_date(date_text)
+
+            if not valid_date:
+                self.show_message(_("Date invalide, veuillez vérifier le format."), "red")
+                return
+
             if not self.category.get():
                 self.show_message(_("Veuillez entrer une catégorie."), "red")
                 return
-            if time_value <= 0:
+
+            if total_seconds <= 0:
                 self.show_message(_("Le temps doit être supérieur à zéro."), "red")
                 return
 
-            # Enregistrement des données en appelant `save_entry` avec les bons paramètres
-            CSVController().save_entry(self.category.get(), description, time_value)
-            self.show_message(_("Temps de {} sur '{}' enregistré avec succès !").format(format_time(time_value), self.category.get()), "green")
-
-            # Réinitialiser les champs après l'enregistrement
+            CSVController().save_entry(self.category.get(), description, total_seconds)
+            self.show_message(_("Temps de {} sur '{}' enregistré avec succès !").format(format_time(total_seconds), self.category.get()), "green")
             self.reset_fields()
             navigate_to(self.root, VIEW_MAIN_MENU)
 
         except ValueError:
             self.show_message(_("Le temps doit être un nombre valide."), "red")
-    
+
     def show_message(self, message, color):
-        """Afficher un message dans le bandeau avec une couleur spécifique."""
         self.message_label.config(text=message, fg=color)
         self.root.after(5000, lambda: self.message_label.config(text=""))
 
     def reset_fields(self):
-        """Réinitialiser les champs après enregistrement."""
         self.category.set("")
-        self.session_seconds.set("0")
-        self.time_unit.set("minutes")
-        self.date_picker.set_date(datetime.now())
+        self.hours_spinbox.delete(0, "end")
+        self.hours_spinbox.insert(0, "00")
+        self.minutes_spinbox.delete(0, "end")
+        self.minutes_spinbox.insert(0, "00")
+        self.seconds_spinbox.delete(0, "end")
+        self.seconds_spinbox.insert(0, "00")
+        self.date_entry.delete(0, "end")
+        self.date_entry.insert(0, datetime.now().strftime("%Y-%m-%d"))
         self.time_picker.delete(0, "end")
         self.time_picker.insert(0, "00")
         self.minute_picker.delete(0, "end")

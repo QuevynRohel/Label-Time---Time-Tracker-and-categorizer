@@ -27,13 +27,19 @@ I believe that knowing at a glance the efforts you put on something can really m
 
 
 # Install
+- [Have python installed.](https://www.python.org/downloads/)
 - Download this has a zip and extract it anywhere you see fit.
-- Have python installed.
- - windows :`pip install -r requirements.txt` 
- - mac & linux `pip3 install -r requirements.txt` 
+- Install automatically or manually: 
+    - Automatically:
+        - Double clic on install.sh at the root of the folder. It will run the manual commands for you.
+    - Manually :
+        - windows :`pip install -r requirements.txt` 
+        - mac & linux `pip3 install -r requirements.txt` 
+
 
 # Compatibility
 - Should work on Linux, MacOs and Windows just fine. But only tested it on Windows so far.
+- Languages: French and english for now.
 
 # Data
 ./timer_app/data/ contains your csv file in case you want it.
