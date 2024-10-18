@@ -1,4 +1,6 @@
 import tkinter as tk
+import re
+
 try:
     from tkinter import ttk
 except ImportError:
@@ -9,7 +11,7 @@ from utils.constants import VIEW_MAIN_MENU
 from utils.translations import _
 from utils.time_utils import format_time
 from views.navigation import navigate_to
-
+from datetime import datetime
 
 class AddEntryView:
     def __init__(self, root, date=None):
@@ -158,16 +160,38 @@ class AddEntryView:
                 btn = tk.Button(categories_frame, text=cat, command=lambda c=cat: self.category.set(c), font=("Helvetica", 10), bg="#ddd", fg="#333", activebackground="#ccc", relief="flat", padx=10, pady=5, cursor="hand2")
                 btn.pack(side="left", padx=5)
 
+  
+
     def validate_date(self, date_text):
         """Valide et formate la date selon la locale."""
-        formats_fr = ["%d/%m/%Y", "%d-%m-%Y", "%d %m %Y"]
-        formats_intl = ["%Y-%m-%d"]
-        for fmt in formats_fr if _("locale") == "fr" else formats_intl:
-            try:
-                return datetime.strptime(date_text, fmt).strftime("%Y-%m-%d")
-            except ValueError:
-                continue
+        
+        # International date format (output)
+        formats_intl = "%Y-%m-%d"
+        
+        # Regex to match various date formats (dd/mm/yyyy, dd-mm-yyyy, dd mm yyyy, yyyy-mm-dd)
+        date_pattern = r"(\d{2,4})[\/\-\s](\d{2})[\/\-\s](\d{2,4})"
+        
+        match = re.match(date_pattern, date_text)
+        print(match)
+        if match:
+            year, month, day = match.groups() # can be day, month, year.
+            if len(year) == 4:
+                try:
+                    parsed_date = datetime.strptime(f"{year}-{month}-{day}", "%Y-%m-%d")
+
+                except ValueError:
+                    return None
+            else:
+                try:
+                    parsed_date = datetime.strptime(f"{day}-{month}-{year}", "%Y-%m-%d")
+                except ValueError:
+                    return None
+
+            return parsed_date.strftime(formats_intl)
+        
+        print("Error while formatting date:", date_text)
         return None
+
 
     def set_date_offset(self, days):
         target_date = datetime.now() + timedelta(days=days)
@@ -197,9 +221,17 @@ class AddEntryView:
             date_text = self.date_entry.get().strip()
             valid_date = self.validate_date(date_text)
 
+            date_hour = int(self.hours_spinbox.get())
+            date_minute = int(self.minutes_spinbox.get())
+            date_second = 0
+
+            print(valid_date)
             if not valid_date:
-                self.show_message(_("Date invalide, veuillez vérifier le format."), "red")
+                self.show_message(_("Date invalide, veuillez vérifier le format.") + " "+ date_text, "red")
                 return
+            
+            entry_date = f"{valid_date} {date_hour:02}:{date_minute:02}:{date_second:02}"
+            print("Entry Date:", entry_date)
 
             if not self.category.get():
                 self.show_message(_("Veuillez entrer une catégorie."), "red")
@@ -209,7 +241,7 @@ class AddEntryView:
                 self.show_message(_("Le temps doit être supérieur à zéro."), "red")
                 return
 
-            CSVController().save_entry(self.category.get(), description, total_seconds)
+            CSVController().save_entry(self.category.get(), description, total_seconds, entry_date)
             self.show_message(_("Temps de {} sur '{}' enregistré avec succès !").format(format_time(total_seconds), self.category.get()), "green")
             self.reset_fields()
             navigate_to(self.root, VIEW_MAIN_MENU)

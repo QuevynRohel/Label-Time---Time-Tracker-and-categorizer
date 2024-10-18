@@ -1,4 +1,4 @@
-import tkinter as tk
+import tkinter as tk    
 import os
 import pandas as pd
 import random
@@ -9,6 +9,7 @@ from utils.translations import _
 from utils.preferences import load_preferences, save_preferences
 from utils.time_utils import format_time, format_time_compact, format_time_minimalistic  # Make sure this function is available
 from views.navigation import navigate_to
+from utils.scrollable_frame import ScrollableFrame
 
 class StatisticsView:
     def __init__(self, root, csv_file=CSV_FILE_PATH):
@@ -16,21 +17,30 @@ class StatisticsView:
         self.csv_file = csv_file
         self.current_date = datetime.now()
         self.categories_colors = load_preferences().get("category_colors", {})
-
+        self.root.minsize(1500, 1000)
         # Configurer la vue pour remplacer l'interface actuelle
         self.root.configure(bg="#f5f5f5")
         self.clear_window()
-
+        
         # Interface principale
         self.add_navigation_bar(self.root)
         self.add_message_label(self.root)
-        self.add_page_options_bar(self.root)  # Updated to include the new options bar
-        self.add_calendar_container(self.root)
-        self.add_totals_labels(self.root)
-        self.add_summary_table(self.root)
 
-        # Charger et afficher les statistiques
-        self.load_statistics(self.root)
+        self.scrollable_frame_class = ScrollableFrame(root)
+        self.scrollable_frame = self.scrollable_frame_class.get_frame()
+        self.scrollable_frame_class.pack(fill="both", expand=True)
+
+        # for i in range(50):  # Ajout de 50 labels pour tester le scroll
+        #     tk.Label(self.scrollable_frame, text=f"Label {i}", bg="#ddffaa").pack()
+
+
+        self.add_calendar_container(self.scrollable_frame)
+        self.add_totals_labels(self.scrollable_frame)
+        self.add_summary_table(self.scrollable_frame)
+
+        # # Charger et afficher les statistiques
+        self.load_statistics(self.scrollable_frame)
+        self.add_page_options_bar(self.root)  # Updated to include the new options bar
 
     def add_navigation_bar(self, parent):
         # Agrandir la barre du haut (height=100)
@@ -42,13 +52,14 @@ class StatisticsView:
         btn_back.pack(side="right", padx=10, pady=5)
 
     def add_message_label(self, parent):
-        self.message_label = tk.Label(parent, text="", font=("Helvetica", 12), bg="#f5f5f5", fg="black")
+        self.message_label = tk.Label(parent, text="", font=("Helvetica", 12), bg="#f5f5f5", fg="black", height=0)
         self.message_label.pack(fill="x")
+        
 
     def add_page_options_bar(self, parent):
         # Nouvelle barre "Option de la page" juste sous la barre de navigation
         options_bar = tk.Frame(parent, height=40)
-        options_bar.pack(fill="x", side="top", pady=5)
+        options_bar.pack(fill="x", side="bottom", pady=5)
 
         # Centrer les Frames pour Mois et Année dans options_bar
         options_bar.columnconfigure(0, weight=1)
@@ -106,7 +117,7 @@ class StatisticsView:
     def load_statistics(self, parent):
         """Charger et afficher les statistiques à partir du fichier CSV."""
         if not os.path.exists(self.csv_file):
-            self.message_label.config(text="Fichier CSV introuvable. Veuillez enregistrer une session d'abord.", fg="red")
+            self.message_label.config(text="Fichier CSV introuvable. Veuillez enregistrer une session d'abord.", fg="red", height=10)
             return
 
         try:
@@ -114,7 +125,7 @@ class StatisticsView:
         except UnicodeDecodeError:
             df = pd.read_csv(self.csv_file, encoding='ISO-8859-1')
         except Exception as e:
-            self.message_label.config(text=str(e), fg="red")
+            self.message_label.config(text=str(e), fg="red", height=10)
             return
 
         if df is not None:
@@ -183,7 +194,7 @@ class StatisticsView:
                 # Afficher le temps total par jour en haut à droite s'il est supérieur à 0
                 if total_day_seconds > 0:
                     total_day_label = tk.Label(day_frame, text=format_time_minimalistic(total_day_seconds), font=("Helvetica", 8, "bold"), fg="#555", anchor="ne", bg="white")
-                    total_day_label.place(x=day_frame_width - 45, y=5)
+                    total_day_label.place(x=day_frame_width - 10, y=5, anchor="ne")
 
                 # Afficher les catégories et descriptions dans chaque case du jour
                 for idx, entry in day_entries.iterrows():
@@ -279,23 +290,23 @@ class StatisticsView:
         self.current_date = self.current_date.replace(year=self.current_date.year - 1)
         self.month_label.config(text=self.current_date.strftime("%B"))
         self.year_label.config(text=self.current_date.strftime("%Y"))
-        self.load_statistics()
+        self.load_statistics(self.scrollable_frame)
 
     def show_next_year(self):
         self.current_date = self.current_date.replace(year=self.current_date.year + 1)
         self.month_label.config(text=self.current_date.strftime("%B"))
         self.year_label.config(text=self.current_date.strftime("%Y"))
-        self.load_statistics()
+        self.load_statistics(self.scrollable_frame)
 
     def show_previous_month(self):
         self.current_date = (self.current_date.replace(day=1) - timedelta(days=1)).replace(day=1)
         self.month_label.config(text=self.current_date.strftime("%B"))
         self.year_label.config(text=self.current_date.strftime("%Y"))
-        self.load_statistics()
+        self.load_statistics(self.scrollable_frame)
 
     def show_next_month(self):
         next_month = (self.current_date.replace(day=28) + timedelta(days=4)).replace(day=1)
         self.current_date = next_month
         self.month_label.config(text=self.current_date.strftime("%B"))
         self.year_label.config(text=self.current_date.strftime("%Y"))
-        self.load_statistics()
+        self.load_statistics(self.scrollable_frame)

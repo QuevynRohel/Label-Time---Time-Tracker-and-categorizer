@@ -28,12 +28,14 @@ class CSVController:
             writer = csv.writer(file)
             writer.writerow(CSV_HEADERS)
 
-    def save_entry(self, category, description, elapsed_seconds):
+    def save_entry(self, category, description, elapsed_seconds, date=None):
         """Enregistre une entrée dans le fichier CSV avec la date actuelle, catégorie, description et durée."""
+
+        final_date = date if date is not None else datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         with open(CSV_FILE_PATH, "a", newline='', encoding="utf-8") as file:
             writer = csv.writer(file)
             writer.writerow([
-                datetime.now().strftime("%Y-%m-%d %H:%M:%S"), 
+                final_date, 
                 elapsed_seconds, 
                 category, 
                 description
