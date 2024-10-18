@@ -1,14 +1,18 @@
 import json
 import os
-from utils.constants import PREFERENCES_FILE
+import locale
+from utils.constants import PREFERENCES_FILE, DEFAULT_LANGUAGE
 
-def load_preferences():
+def load_preferences(always_return_a_result=True):
     """Charge les préférences de langue depuis preferences.json."""
     if os.path.exists(PREFERENCES_FILE):
         with open(PREFERENCES_FILE, "r", encoding="utf-8") as file:
             return json.load(file)
+        
+    if not always_return_a_result:
+        return {}
     # Si le fichier n'existe pas, retourne les préférences par défaut
-    return {"language": "en"}
+    return {"language": DEFAULT_LANGUAGE}
 
 def save_preferences(preferences):
     """Enregistre les préférences de langue dans preferences.json."""
@@ -18,8 +22,3 @@ def save_preferences(preferences):
     with open(PREFERENCES_FILE, "w", encoding="utf-8") as file:
         json.dump(preferences, file, ensure_ascii=False, indent=4)
 
-# Initialisation des préférences pour garantir l'existence du fichier
-def initialize_preferences():
-    """Vérifie l'existence du fichier preferences.json et crée des valeurs par défaut si nécessaire."""
-    if not os.path.exists(PREFERENCES_FILE):
-        save_preferences({"language": "en"})

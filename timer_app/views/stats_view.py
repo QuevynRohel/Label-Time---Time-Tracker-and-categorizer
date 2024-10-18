@@ -117,7 +117,8 @@ class StatisticsView:
     def load_statistics(self, parent):
         """Charger et afficher les statistiques à partir du fichier CSV."""
         if not os.path.exists(self.csv_file):
-            self.message_label.config(text="Fichier CSV introuvable. Veuillez enregistrer une session d'abord.", fg="red", height=10)
+            self.message_label.config(text=_("Fichier CSV introuvable. Veuillez enregistrer une session d'abord."), fg="red", height=10)
+
             return
 
         try:
@@ -164,7 +165,7 @@ class StatisticsView:
         day_frame_width = 150
 
         # Entêtes des jours de la semaine
-        for i, day in enumerate(["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"]):
+        for i, day in enumerate([_("Lun"), _("Mar"), _("Mer"), _("Jeu"), _("Ven"), _("Sam"), _("Dim")]):
             tk.Label(self.calendar_frame, text=day, font=("Helvetica", 12, "bold"), width=15).grid(row=0, column=i)
 
         # Grouper les données par jour et catégorie
@@ -259,9 +260,9 @@ class StatisticsView:
 
     def calculate_totals(self, df, current_month_data):
         total_seconds_month = current_month_data['Temps en secondes'].sum()
-        self.total_month_label.config(text=f"Total pour le mois : {format_time(total_seconds_month)}")
+        self.total_month_label.config(text=_("Total pour le mois : {time}").format(time=format_time(total_seconds_month)))
         total_seconds_lifetime = df['Temps en secondes'].sum()
-        self.total_lifetime_label.config(text=f"Total pour toute la vie : {format_time(total_seconds_lifetime)}")
+        self.total_lifetime_label.config(text=_("Total pour toute la vie : {time}").format(time=format_time(total_seconds_lifetime)))
 
     def show_summary_table(self, df, current_month_data):
         for widget in self.summary_frame.winfo_children():
@@ -270,11 +271,12 @@ class StatisticsView:
         monthly_totals = current_month_data.groupby('Catégorie')['Temps en secondes'].sum()
         lifetime_totals = df.groupby('Catégorie')['Temps en secondes'].sum()
 
-        tk.Label(self.summary_frame, text="Catégorie", font=("Helvetica", 14, "bold")).grid(row=0, column=0, padx=10, pady=5)
-        tk.Label(self.summary_frame, text="Temps ce mois-ci", font=("Helvetica", 14, "bold")).grid(row=0, column=1, padx=10, pady=5)
-        tk.Label(self.summary_frame, text="Temps cumulé", font=("Helvetica", 14, "bold")).grid(row=0, column=2, padx=10, pady=5)
+        tk.Label(self.summary_frame, text=_("Catégorie"), font=("Helvetica", 14, "bold")).grid(row=0, column=0, padx=10, pady=5)
+        tk.Label(self.summary_frame, text=_("Temps ce mois-ci"), font=("Helvetica", 14, "bold")).grid(row=0, column=1, padx=10, pady=5)
+        tk.Label(self.summary_frame, text=_("Temps cumulé"), font=("Helvetica", 14, "bold")).grid(row=0, column=2, padx=10, pady=5)
 
-        tk.Label(self.summary_frame, text="Toutes catégories", font=("Helvetica", 12, "bold")).grid(row=1, column=0, padx=10, pady=5)
+        tk.Label(self.summary_frame, text=_("Toutes catégories"), font=("Helvetica", 12, "bold")).grid(row=1, column=0, padx=10, pady=5)
+
         tk.Label(self.summary_frame, text=format_time(monthly_totals.sum()), font=("Helvetica", 12, "bold")).grid(row=1, column=1, padx=10, pady=5)
         tk.Label(self.summary_frame, text=format_time(lifetime_totals.sum()), font=("Helvetica", 12, "bold")).grid(row=1, column=2, padx=10, pady=5)
 

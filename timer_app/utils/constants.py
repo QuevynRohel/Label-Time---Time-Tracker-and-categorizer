@@ -18,6 +18,7 @@ CSV_FILE_PATH = os.path.join(get_data_path(), "times.csv")
 CSV_HEADERS = ["Date", "Temps en secondes", "Catégorie", "Description"]
 
 PREFERENCES_FILE = os.path.join(get_data_path(), "preferences.json")
+DEFAULT_LANGUAGE = "en"
 
 # Noms des vues pour la navigation
 VIEW_MAIN_MENU = "view_main_menu"
