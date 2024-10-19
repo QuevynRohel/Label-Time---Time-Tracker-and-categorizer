@@ -35,7 +35,20 @@ translations = {
         "h": "h",
         "locale": "locale",
         "⚡ Démarrer une session": "⚡ Start a session",
-        "📊 Statistiques": "📊 Statistics"
+        "📊 Statistiques": "📊 Statistics",
+        "Dim": "Sun",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "CSV file not found. Please record a session first.",
+        "Jeu": "Thu",
+        "Lun": "Mon",
+        "Mar": "Tue",
+        "Mer": "Wed",
+        "Sam": "Sat",
+        "Temps ce mois-ci": "Time this month",
+        "Temps cumulé": "Cumulative time",
+        "Total pour le mois : {time}": "Total for the month: {time}",
+        "Total pour toute la vie : {time}": "Total for the lifetime: {time}",
+        "Toutes catégories": "All categories",
+        "Ven": "Fri"
     },
     "fr": {
         "TIME TRACKER": "LE TRAQUEUR DE TEMPS",
@@ -66,7 +79,20 @@ translations = {
         "h": "h",
         "locale": "locale",
         "⚡ Démarrer une session": "⚡ Démarrer une session",
-        "📊 Statistiques": "📊 Statistiques"
+        "📊 Statistiques": "📊 Statistiques",
+        "Dim": "Dim",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.",
+        "Jeu": "Jeu",
+        "Lun": "Lun",
+        "Mar": "Mar",
+        "Mer": "Mer",
+        "Sam": "Sam",
+        "Temps ce mois-ci": "Temps ce mois-ci",
+        "Temps cumulé": "Temps cumulé",
+        "Total pour le mois : {time}": "Total pour le mois : {time}",
+        "Total pour toute la vie : {time}": "Total pour toute la vie : {time}",
+        "Toutes catégories": "Toutes catégories",
+        "Ven": "Ven"
     },
     "es": {
         "TIME TRACKER": "RASTREADOR DE TIEMPO",
@@ -97,7 +123,20 @@ translations = {
         "h": "h",
         "locale": "localidad",
         "⚡ Démarrer une session": "⚡ Iniciar sesión",
-        "📊 Statistiques": "📊 Estadísticas"
+        "📊 Statistiques": "📊 Estadísticas",
+        "Dim": "Dom",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "Archivo CSV no encontrado. Por favor, registre una sesión primero.",
+        "Jeu": "Jue",
+        "Lun": "Lun",
+        "Mar": "Mar",
+        "Mer": "Mié",
+        "Sam": "Sáb",
+        "Temps ce mois-ci": "Tiempo este mes",
+        "Temps cumulé": "Tiempo acumulado",
+        "Total pour le mois : {time}": "Total para el mes: {time}",
+        "Total pour toute la vie : {time}": "Total de toda la vida: {time}",
+        "Toutes catégories": "Todas las categorías",
+        "Ven": "Vie"
     },
     "de": {
         "TIME TRACKER": "ZEITVERFOLGER",
@@ -128,7 +167,20 @@ translations = {
         "h": "Std",
         "locale": "Ortsangabe",
         "⚡ Démarrer une session": "⚡ Sitzung starten",
-        "📊 Statistiques": "📊 Statistiken"
+        "📊 Statistiques": "📊 Statistiken",
+        "Dim": "So",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "CSV-Datei nicht gefunden. Bitte erfassen Sie zuerst eine Sitzung.",
+        "Jeu": "Do",
+        "Lun": "Mo",
+        "Mar": "Di",
+        "Mer": "Mi",
+        "Sam": "Sa",
+        "Temps ce mois-ci": "Zeit in diesem Monat",
+        "Temps cumulé": "Gesamtzeit",
+        "Total pour le mois : {time}": "Gesamt für den Monat: {time}",
+        "Total pour toute la vie : {time}": "Gesamt für das Leben: {time}",
+        "Toutes catégories": "Alle Kategorien",
+        "Ven": "Fr"
     }, 
      "it": {
         "TIME TRACKER": "TRACCIATEMPO",
@@ -159,7 +211,20 @@ translations = {
         "h": "h",
         "locale": "locale",
         "⚡ Démarrer une session": "⚡ Avvia una sessione",
-        "📊 Statistiques": "📊 Statistiche"
+        "📊 Statistiques": "📊 Statistiche",
+        "Dim": "Dom",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "File CSV non trovato. Si prega di registrare una sessione prima.",
+        "Jeu": "Gio",
+        "Lun": "Lun",
+        "Mar": "Mar",
+        "Mer": "Mer",
+        "Sam": "Sab",
+        "Temps ce mois-ci": "Tempo di questo mese",
+        "Temps cumulé": "Tempo cumulativo",
+        "Total pour le mois : {time}": "Totale per il mese: {time}",
+        "Total pour toute la vie : {time}": "Totale per tutta la vita: {time}",
+        "Toutes catégories": "Tutte le categorie",
+        "Ven": "Ven"
     },
     "zh": {
         "TIME TRACKER": "时间追踪器",
@@ -190,7 +255,20 @@ translations = {
         "h": "小时",
         "locale": "本地",
         "⚡ Démarrer une session": "⚡ 开始会话",
-        "📊 Statistiques": "📊 统计"
+        "📊 Statistiques": "📊 统计",
+        "Dim": "周日",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "未找到CSV文件。 请先记录一次会话。",
+        "Jeu": "周四",
+        "Lun": "周一",
+        "Mar": "周二",
+        "Mer": "周三",
+        "Sam": "周六",
+        "Temps ce mois-ci": "本月时间",
+        "Temps cumulé": "累计时间",
+        "Total pour le mois : {time}": "本月总计：{time}",
+        "Total pour toute la vie : {time}": "一生总计：{time}",
+        "Toutes catégories": "所有类别",
+        "Ven": "周五"
     },
     "ja": {
         "TIME TRACKER": "タイムトラッカー",
@@ -221,7 +299,20 @@ translations = {
         "h": "時間",
         "locale": "ロケール",
         "⚡ Démarrer une session": "⚡ セッションを開始",
-        "📊 Statistiques": "📊 統計"
+        "📊 Statistiques": "📊 統計",
+        "Dim": "日",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "CSVファイルが見つかりません。最初にセッションを記録してください。",
+        "Jeu": "木",
+        "Lun": "月",
+        "Mar": "火",
+        "Mer": "水",
+        "Sam": "土",
+        "Temps ce mois-ci": "今月の時間",
+        "Temps cumulé": "累積時間",
+        "Total pour le mois : {time}": "今月の合計：{time}",
+        "Total pour toute la vie : {time}": "生涯合計：{time}",
+        "Toutes catégories": "すべてのカテゴリ",
+        "Ven": "金"
     },
     "ru": {
         "TIME TRACKER": "ТАЙМ-ТРЕКЕР",
@@ -252,7 +343,20 @@ translations = {
         "h": "ч",
         "locale": "локаль",
         "⚡ Démarrer une session": "⚡ Начать сеанс",
-        "📊 Statistiques": "📊 Статистика"
+        "📊 Statistiques": "📊 Статистика",
+        "Dim": "Вс",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "Файл CSV не найден. Сначала запишите сессию.",
+        "Jeu": "Чт",
+        "Lun": "Пн",
+        "Mar": "Вт",
+        "Mer": "Ср",
+        "Sam": "Сб",
+        "Temps ce mois-ci": "Время в этом месяце",
+        "Temps cumulé": "Общее время",
+        "Total pour le mois : {time}": "Итог за месяц: {time}",
+        "Total pour toute la vie : {time}": "Общий итог за всю жизнь: {time}",
+        "Toutes catégories": "Все категории",
+        "Ven": "Пт"
     },
     "ar": {
         "TIME TRACKER": "متعقب الوقت",
@@ -283,7 +387,20 @@ translations = {
         "h": "س",
         "locale": "المنطقة",
         "⚡ Démarrer une session": "⚡ بدء الجلسة",
-        "📊 Statistiques": "📊 الإحصاءات"
+        "📊 Statistiques": "📊 الإحصاءات",
+        "Dim": "ح",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "ملف CSV غير موجود. الرجاء تسجيل جلسة أولاً.",
+        "Jeu": "خ",
+        "Lun": "اث",
+        "Mar": "ث",
+        "Mer": "أر",
+        "Sam": "س",
+        "Temps ce mois-ci": "الوقت هذا الشهر",
+        "Temps cumulé": "الوقت الإجمالي",
+        "Total pour le mois : {time}": "الإجمالي للشهر: {time}",
+        "Total pour toute الحياة: {time}": "الإجمالي مدى الحياة: {time}",
+        "Toutes catégories": "كل الفئات",
+        "Ven": "ج"
     },
     "pt": {
         "TIME TRACKER": "RASTREADOR DE TEMPO",
@@ -314,7 +431,20 @@ translations = {
         "h": "h",
         "locale": "local",
         "⚡ Démarrer une session": "⚡ Iniciar sessão",
-        "📊 Statistiques": "📊 Estatísticas"
+        "📊 Statistiques": "📊 Estatísticas",
+        "Dim": "Dom",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "Arquivo CSV não encontrado. Por favor, registre uma sessão primeiro.",
+        "Jeu": "Qui",
+        "Lun": "Seg",
+        "Mar": "Ter",
+        "Mer": "Qua",
+        "Sam": "Sáb",
+        "Temps ce mois-ci": "Tempo deste mês",
+        "Temps cumulé": "Tempo acumulado",
+        "Total pour le mois : {time}": "Total para o mês: {time}",
+        "Total pour toute la vie : {time}": "Total para toda a vida: {time}",
+        "Toutes catégories": "Todas as categorias",
+        "Ven": "Sex"
     },
     "nl": {
         "TIME TRACKER": "TIJDMETER",
@@ -345,7 +475,20 @@ translations = {
         "h": "u",
         "locale": "lokaal",
         "⚡ Démarrer une session": "⚡ Start een sessie",
-        "📊 Statistiques": "📊 Statistieken"
+        "📊 Statistiques": "📊 Statistieken",
+        "Dim": "Zon",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "CSV-bestand niet gevonden. Registreer eerst een sessie.",
+        "Jeu": "Don",
+        "Lun": "Maa",
+        "Mar": "Din",
+        "Mer": "Woe",
+        "Sam": "Zat",
+        "Temps ce mois-ci": "Tijd deze maand",
+        "Temps cumulé": "Opgetelde tijd",
+        "Total pour le mois : {time}": "Totaal voor de maand: {time}",
+        "Total pour toute la vie : {time}": "Totaal voor het leven: {time}",
+        "Toutes catégories": "Alle categorieën",
+        "Ven": "Vri"
     },
     "ko": {
         "TIME TRACKER": "시간 추적기",
@@ -376,7 +519,20 @@ translations = {
         "h": "시",
         "locale": "지역",
         "⚡ Démarrer une session": "⚡ 세션 시작",
-        "📊 Statistiques": "📊 통계"
+        "📊 Statistiques": "📊 통계",
+        "Dim": "일",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "CSV 파일을 찾을 수 없습니다. 세션을 먼저 기록하십시오.",
+        "Jeu": "목",
+        "Lun": "월",
+        "Mar": "화",
+        "Mer": "수",
+        "Sam": "토",
+        "Temps ce mois-ci": "이번 달 시간",
+        "Temps cumulé": "누적 시간",
+        "Total pour le mois : {time}": "이번 달 총계: {time}",
+        "Total pour toute la vie : {time}": "인생 전체 총계: {time}",
+        "Toutes catégories": "모든 카테고리",
+        "Ven": "금"
     },
     "vi": {
         "TIME TRACKER": "TRÌNH THEO DÕI THỜI GIAN",
@@ -407,7 +563,20 @@ translations = {
         "h": "h",
         "locale": "vùng",
         "⚡ Démarrer une session": "⚡ Bắt đầu phiên",
-        "📊 Statistiques": "📊 Thống kê"
+        "📊 Statistiques": "📊 Thống kê",
+        "Dim": "CN",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "Không tìm thấy tệp CSV. Vui lòng ghi lại một phiên trước.",
+        "Jeu": "Thứ Năm",
+        "Lun": "Thứ Hai",
+        "Mar": "Thứ Ba",
+        "Mer": "Thứ Tư",
+        "Sam": "Thứ Bảy",
+        "Temps ce mois-ci": "Thời gian trong tháng này",
+        "Temps cumulé": "Thời gian tích lũy",
+        "Total pour le mois : {time}": "Tổng thời gian trong tháng: {time}",
+        "Total pour toute la vie : {time}": "Tổng thời gian cho cả cuộc đời: {time}",
+        "Toutes catégories": "Tất cả các danh mục",
+        "Ven": "Thứ Sáu"
     },
     "hi": {
         "TIME TRACKER": "समय ट्रैकर",
@@ -438,7 +607,20 @@ translations = {
         "h": "घंटा",
         "locale": "क्षेत्र",
         "⚡ Démarrer une session": "⚡ सत्र शुरू करें",
-        "📊 Statistiques": "📊 आँकड़े"
+        "📊 Statistiques": "📊 आँकड़े",
+        "Dim": "रविवार",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "CSV फ़ाइल नहीं मिली। कृपया पहले एक सत्र रिकॉर्ड करें।",
+        "Jeu": "गुरुवार",
+        "Lun": "सोमवार",
+        "Mar": "मंगलवार",
+        "Mer": "बुधवार",
+        "Sam": "शनिवार",
+        "Temps ce mois-ci": "इस महीने का समय",
+        "Temps cumulé": "कुल समय",
+        "Total pour le mois : {time}": "महीने के लिए कुल: {time}",
+        "Total pour toute la vie : {time}": "पूरे जीवन के लिए कुल: {time}",
+        "Toutes catégories": "सभी श्रेणियां",
+        "Ven": "शुक्रवार"
     },
     "nl-BE": {
         "TIME TRACKER": "TIJD VOLGER",
@@ -469,7 +651,20 @@ translations = {
         "h": "u",
         "locale": "lokaal",
         "⚡ Démarrer une session": "⚡ Start een sessie",
-        "📊 Statistiques": "📊 Statistieken"
+        "📊 Statistiques": "📊 Statistieken",
+        "Dim": "Zon",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "CSV-bestand niet gevonden. Registreer eerst een sessie.",
+        "Jeu": "Don",
+        "Lun": "Maa",
+        "Mar": "Din",
+        "Mer": "Woe",
+        "Sam": "Zat",
+        "Temps ce mois-ci": "Tijd deze maand",
+        "Temps cumulé": "Opgetelde tijd",
+        "Total pour le mois : {time}": "Totaal voor de maand: {time}",
+        "Total pour toute la vie : {time}": "Totaal voor het leven: {time}",
+        "Toutes catégories": "Alle categorieën",
+        "Ven": "Vri"
     },
      "pl": {
         "TIME TRACKER": "ŚLEDZENIE CZASU",
@@ -500,7 +695,20 @@ translations = {
         "h": "g",
         "locale": "Lokalizacja",
         "⚡ Démarrer une session": "⚡ Rozpocznij sesję",
-        "📊 Statistiques": "📊 Statystyki"
+        "📊 Statistiques": "📊 Statystyki",
+        "Dim": "Nie",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "Nie znaleziono pliku CSV. Proszę najpierw zapisać sesję.",
+        "Jeu": "Czw",
+        "Lun": "Pon",
+        "Mar": "Wto",
+        "Mer": "Śro",
+        "Sam": "Sob",
+        "Temps ce mois-ci": "Czas w tym miesiącu",
+        "Temps cumulé": "Suma czasu",
+        "Total pour le mois : {time}": "Łącznie za miesiąc: {time}",
+        "Total pour toute la vie : {time}": "Łącznie za całe życie: {time}",
+        "Toutes catégories": "Wszystkie kategorie",
+        "Ven": "Pią"
     },
     "uk": {
         "TIME TRACKER": "ВІДСТЕЖУВАЧ ЧАСУ",
@@ -531,7 +739,20 @@ translations = {
         "h": "г",
         "locale": "Регіон",
         "⚡ Démarrer une session": "⚡ Почати сесію",
-        "📊 Statistiques": "📊 Статистика"
+        "📊 Statistiques": "📊 Статистика",
+        "Dim": "Нед",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "CSV-файл не знайдено. Будь ласка, спочатку збережіть сеанс.",
+        "Jeu": "Чет",
+        "Lun": "Пон",
+        "Mar": "Вів",
+        "Mer": "Сер",
+        "Sam": "Суб",
+        "Temps ce mois-ci": "Час цього місяця",
+        "Temps cumulé": "Накопичений час",
+        "Total pour le mois : {time}": "Загалом за місяць: {time}",
+        "Total pour toute la vie : {time}": "Загалом за все життя: {time}",
+        "Toutes catégories": "Усі категорії",
+        "Ven": "П'ят"
     },
     "hr": {
         "TIME TRACKER": "PRAĆENJE VREMENA",
@@ -562,7 +783,20 @@ translations = {
         "h": "s",
         "locale": "Lokal",
         "⚡ Démarrer une session": "⚡ Započni sesiju",
-        "📊 Statistiques": "📊 Statistike"
+        "📊 Statistiques": "📊 Statistike",
+        "Dim": "Ned",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "CSV datoteka nije pronađena. Molimo prvo snimite sesiju.",
+        "Jeu": "Čet",
+        "Lun": "Pon",
+        "Mar": "Uto",
+        "Mer": "Sri",
+        "Sam": "Sub",
+        "Temps ce mois-ci": "Vrijeme ovog mjeseca",
+        "Temps cumulé": "Ukupno vrijeme",
+        "Total pour le mois : {time}": "Ukupno za mjesec: {time}",
+        "Total pour toute la vie : {time}": "Ukupno za cijeli život: {time}",
+        "Toutes catégories": "Sve kategorije",
+        "Ven": "Pet"
     },
     "tr": {
         "TIME TRACKER": "ZAMAN TAKİPÇİSİ",
@@ -593,38 +827,20 @@ translations = {
         "h": "sa",
         "locale": "Yerel",
         "⚡ Démarrer une session": "⚡ Oturumu başlat",
-        "📊 Statistiques": "📊 İstatistikler"
-    },
-    "zh": {
-        "TIME TRACKER": "时间跟踪器",
-        "Accomplissez de grandes choses aujourd'hui !": "今天完成伟大的事情！",
-        "Ajouter un temps": "添加时间",
-        "Anglais": "英语",
-        "Catégorie": "类别",
-        "Catégorie accomplie": "已完成的类别",
-        "Date": "日期",
-        "Date invalide, veuillez vérifier le format.": "无效的日期，请检查格式。",
-        "Description": "描述",
-        "Description optionnelle": "可选描述",
-        "Enregistrer": "保存",
-        "Français": "法语",
-        "Langues": "语言",
-        "Le": "Le",
-        "Le temps doit être supérieur à zéro.": "时间必须大于零。",
-        "Le temps doit être un nombre valide.": "时间必须是有效数字。",
-        "Ouvrir le dossier vers mes temps": "打开我的时间文件夹",
-        "Retour": "返回",
-        "Temps": "时间",
-        "Temps de {time} sur '{category}' enregistré avec succès !": "{category} 的 {time} 已成功保存！",
-        "Télécharger mes temps": "下载我的时间",
-        "Veuillez entrer une catégorie.": "请输入一个类别。",
-        "\u23F8 Pause": "\u23F8 暂停",
-        "\u25A0 Stop": "\u25A0 停止",
-        "\u25B6 Play": "\u25B6 播放",
-        "h": "小时",
-        "locale": "地区",
-        "⚡ Démarrer une session": "⚡ 开始会议",
-        "📊 Statistiques": "📊 统计"
+        "📊 Statistiques": "📊 İstatistikler",
+        "Dim": "Paz",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "CSV dosyası bulunamadı. Lütfen önce bir oturum kaydedin.",
+        "Jeu": "Per",
+        "Lun": "Pzt",
+        "Mar": "Sal",
+        "Mer": "Çar",
+        "Sam": "Cts",
+        "Temps ce mois-ci": "Bu ayın süresi",
+        "Temps cumulé": "Toplam süre",
+        "Total pour le mois : {time}": "Ay için toplam: {time}",
+        "Total pour toute la vie : {time}": "Tüm yaşam süresi: {time}",
+        "Toutes catégories": "Tüm kategoriler",
+        "Ven": "Cum"
     },
     "fa": {
         "TIME TRACKER": "ردیاب زمان",
@@ -655,7 +871,20 @@ translations = {
         "h": "ساعت",
         "locale": "منطقه",
         "⚡ Démarrer une session": "⚡ شروع جلسه",
-        "📊 Statistiques": "📊 آمار"
+        "📊 Statistiques": "📊 آمار",
+        "Dim": "ی",
+        "Fichier CSV introuvable. Veuillez enregistrer une session d'abord.": "فایل CSV یافت نشد. لطفاً ابتدا یک جلسه ذخیره کنید.",
+        "Jeu": "پ",
+        "Lun": "د",
+        "Mar": "س",
+        "Mer": "چ",
+        "Sam": "ش",
+        "Temps ce mois-ci": "زمان این ماه",
+        "Temps cumulé": "زمان جمع‌شده",
+        "Total pour le mois : {time}": "مجموع برای ماه: {time}",
+        "Total pour toute la vie : {time}": "مجموع برای تمام زندگی: {time}",
+        "Toutes catégories": "همه دسته‌ها",
+        "Ven": "ج"
     }
 }
 
@@ -683,6 +912,33 @@ months_translations = {
     'hr': ["Siječanj", "Veljača", "Ožujak", "Travanj", "Svibanj", "Lipanj", "Srpanj", "Kolovoz", "Rujan", "Listopad", "Studeni", "Prosinac"],
 }
 
+def get_original_country_name(lang_code):
+    """Returns the display name of a language given its code."""
+    # Sample language names for different codes; extend this to cover all your cases
+    translations = {
+        'en': 'English',
+        'fr': 'Français',
+        'es': 'Español',
+        'de': 'Deutsch',
+        'it': 'Italiano',
+        'zh': '中文 (Chinese)',
+        'ja': '日本語 (Japanese)',
+        'ru': 'Русский (Russian)',
+        'pt': 'Português',
+        'nl': 'Nederlands',
+        'nl-BE': 'Dutch',
+        'ko': '한국어 (Korean)',
+        'vi': 'Tiếng Việt (Vietnamese)',
+        'hi': 'हिन्दी (Hindi)',
+        'pl': 'Polski',
+        'uk': 'Українська (Ukrainian)',
+        'sr': 'Српски (Serbian)',
+        'tr': 'Türkçe (Turkish)',
+        'fa': 'فارسی (Persian)',
+        'ar': 'العربية (Arabic)',
+        'hr': 'Hrvatski (Croatian)',
+    }
+    return translations.get(lang_code, lang_code)
 def get_translated_month(current_date, language_code):
     month_index = current_date.month - 1  # strftime("%B") donne l'index à partir de 1
     return months_translations[language_code][month_index]
@@ -729,3 +985,7 @@ def initialize_language():
 
     # Retourner la langue sélectionnée
     return selected_language
+
+def get_language():
+    return lang
+
