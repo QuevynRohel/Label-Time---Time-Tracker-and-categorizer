@@ -1,8 +1,8 @@
 #!make
-compile:
-	pyinstaller --clean compiler.spec
+prod:
+	pyinstaller --clean compiler.spec -y
 
-compiler_dev:
+dev:
 	pyinstaller --clean compiler_dev.spec -y
 
 

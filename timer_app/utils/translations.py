@@ -981,7 +981,6 @@ def initialize_language():
         save_preferences(preferences)
 
     set_language(selected_language)
-    print("Final language ", selected_language)
 
     # Retourner la langue sélectionnée
     return selected_language

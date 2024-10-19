@@ -3,9 +3,15 @@ def format_time(seconds):
     if seconds >= 3600:
         hours = seconds // 3600
         minutes = (seconds % 3600) // 60
-        return f"{int(hours)}h{int(minutes)}min"
+        if minutes == 0:
+            return f"{int(hours)}h"
+        return f"{int(hours)}h{int(minutes):02}min"
     minutes = seconds // 60
     seconds = seconds % 60
+    if minutes == 0:
+        return f"{int(seconds):02}sec"
+    if seconds == 0:
+        return f"{int(minutes)}min"
     return f"{int(minutes)}min{int(seconds):02}sec"
 
 def format_time_compact(seconds):

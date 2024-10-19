@@ -252,7 +252,7 @@ class StatisticsView:
 
     def go_to_add_entry(self, parent, day):
         selected_date = self.current_date.replace(day=day, hour=12, minute=0)
-        navigate_to(parent, VIEW_ADD_ENTRY, date=selected_date)
+        navigate_to(self.root, VIEW_ADD_ENTRY, date=selected_date)
 
     def generate_random_color(self):
         colors = ["#FF5733", "#33FF57", "#A833FF", "#FF33A8", "#C866AA", "#33FFF2", "#FF8333", "#8C33FF", "#33FF8C", "#FF3386"]
@@ -277,15 +277,15 @@ class StatisticsView:
 
         tk.Label(self.summary_frame, text=_("Toutes catégories"), font=("Helvetica", 12, "bold")).grid(row=1, column=0, padx=10, pady=5)
 
-        tk.Label(self.summary_frame, text=format_time(monthly_totals.sum()), font=("Helvetica", 12, "bold")).grid(row=1, column=1, padx=10, pady=5)
-        tk.Label(self.summary_frame, text=format_time(lifetime_totals.sum()), font=("Helvetica", 12, "bold")).grid(row=1, column=2, padx=10, pady=5)
+        tk.Label(self.summary_frame, text=format_time_minimalistic(monthly_totals.sum()), font=("Helvetica", 12, "bold")).grid(row=1, column=1, padx=10, pady=5)
+        tk.Label(self.summary_frame, text=format_time_minimalistic(lifetime_totals.sum()), font=("Helvetica", 12, "bold")).grid(row=1, column=2, padx=10, pady=5)
 
         sorted_monthly_totals = monthly_totals.sort_values(ascending=False)
         for i, (category, time_seconds) in enumerate(sorted_monthly_totals.items(), start=2):
             color = self.categories_colors.get(category, "#000000")
             tk.Label(self.summary_frame, text=category, font=("Helvetica", 10), fg=color).grid(row=i, column=0, padx=10, pady=5)
-            tk.Label(self.summary_frame, text=format_time(time_seconds), font=("Helvetica", 10), fg=color).grid(row=i, column=1, padx=10, pady=5)
-            tk.Label(self.summary_frame, text=format_time(lifetime_totals[category]), font=("Helvetica", 10), fg=color).grid(row=i, column=2, padx=10, pady=5)
+            tk.Label(self.summary_frame, text=format_time_minimalistic(time_seconds), font=("Helvetica", 10), fg=color).grid(row=i, column=1, padx=10, pady=5)
+            tk.Label(self.summary_frame, text=format_time_minimalistic(lifetime_totals[category]), font=("Helvetica", 10), fg=color).grid(row=i, column=2, padx=10, pady=5)
 
     # Ajouter les méthodes pour changer d'année
     def show_previous_year(self):

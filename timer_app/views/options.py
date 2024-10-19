@@ -18,10 +18,10 @@ class OptionsView:
         container = tk.Frame(self.root, bg="#f5f5f5")
         container.place(relx=0.5, rely=0.5, anchor="center")
 
-        # Boutons d'options supplémentaires
-        self.add_option_buttons(container)
+        # # Boutons d'options supplémentaires
+        # self.add_option_buttons(container)
 
-        # Label pour le sélecteur de langue
+        # # Label pour le sélecteur de langue
         tk.Label(container, text=_("Langues"), font=("Helvetica", 12), bg="#f5f5f5").pack(anchor="center", pady=(20, 5))
 
         # Dropdown for language selection

@@ -9,21 +9,14 @@ block_cipher = None
 # Charger les variables d'environnement
 load_dotenv()
 python_package_path = os.getenv("PYTHON_PACKAGE_PATH")
-module_tkcalendar = f"{python_package_path}/tkcalendar"
 
-print(module_tkcalendar)
-# Inclure tkcalendar dans les datas
-datas = [(module_tkcalendar, 'tkcalendar')]
-
-# Collecter tous les sous-modules de tkcalendar
-hidden_imports = collect_submodules('tkcalendar') + ['tkinter', 'tkinter.ttk']
 
 a = Analysis(
     ['timer_app\\main.py'],
     pathex=["./timer_app"],
     binaries=[],
-    datas=datas,
-    hiddenimports=hidden_imports,
+    datas=[],
+    hiddenimports=[],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
