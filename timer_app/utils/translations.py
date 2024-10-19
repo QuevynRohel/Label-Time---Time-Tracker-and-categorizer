@@ -938,10 +938,16 @@ def get_original_country_name(lang_code):
         'ar': 'العربية (Arabic)',
         'hr': 'Hrvatski (Croatian)',
     }
+
     return translations.get(lang_code, lang_code)
-def get_translated_month(current_date, language_code):
-    month_index = current_date.month - 1  # strftime("%B") donne l'index à partir de 1
-    return months_translations[language_code][month_index]
+
+def get_translated_month(current_date):
+    month_index = current_date.month - 1 
+    if months_translations.get(lang, None) is None:
+        return current_date.strftime("%B")
+    
+    return months_translations[lang][month_index]
+
 # # Détection automatique de la langue du système
 system_language = locale.getdefaultlocale()[0][:2]
 lang = os.getenv("APP_LANG", system_language if system_language in translations else "en")

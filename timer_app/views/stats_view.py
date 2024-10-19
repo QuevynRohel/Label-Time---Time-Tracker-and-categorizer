@@ -5,7 +5,7 @@ import random
 from datetime import datetime, timedelta
 import calendar
 from utils.constants import CSV_FILE_PATH, VIEW_MAIN_MENU, VIEW_ADD_ENTRY
-from utils.translations import _
+from utils.translations import _, get_translated_month
 from utils.preferences import load_preferences, save_preferences
 from utils.time_utils import format_time, format_time_compact, format_time_minimalistic  # Make sure this function is available
 from views.navigation import navigate_to
@@ -77,7 +77,7 @@ class StatisticsView:
         btn_prev_month = tk.Button(month_frame, text="\u25C0", command=self.show_previous_month, relief="flat",
                                 font=("Helvetica", 18), bg="#d3d3d3", cursor="hand2", borderwidth=0)
         btn_prev_month.pack(side="left")
-        self.month_label = tk.Label(month_frame, text=self.current_date.strftime("%B"), font=("Helvetica", 16, "bold"),
+        self.month_label = tk.Label(month_frame, text=get_translated_month(self.current_date), font=("Helvetica", 16, "bold"),
                                     width=15, anchor="center")  # Taille de 60px pour le mois
         self.month_label.pack(side="left")
         btn_next_month = tk.Button(month_frame, text="\u25B6", command=self.show_next_month, relief="flat",
@@ -290,25 +290,25 @@ class StatisticsView:
     # Ajouter les méthodes pour changer d'année
     def show_previous_year(self):
         self.current_date = self.current_date.replace(year=self.current_date.year - 1)
-        self.month_label.config(text=self.current_date.strftime("%B"))
+        self.month_label.config(text=get_translated_month(self.current_date))
         self.year_label.config(text=self.current_date.strftime("%Y"))
         self.load_statistics(self.scrollable_frame)
 
     def show_next_year(self):
         self.current_date = self.current_date.replace(year=self.current_date.year + 1)
-        self.month_label.config(text=self.current_date.strftime("%B"))
+        self.month_label.config(text=get_translated_month(self.current_date))
         self.year_label.config(text=self.current_date.strftime("%Y"))
         self.load_statistics(self.scrollable_frame)
 
     def show_previous_month(self):
         self.current_date = (self.current_date.replace(day=1) - timedelta(days=1)).replace(day=1)
-        self.month_label.config(text=self.current_date.strftime("%B"))
+        self.month_label.config(text=get_translated_month(self.current_date))
         self.year_label.config(text=self.current_date.strftime("%Y"))
         self.load_statistics(self.scrollable_frame)
 
     def show_next_month(self):
         next_month = (self.current_date.replace(day=28) + timedelta(days=4)).replace(day=1)
         self.current_date = next_month
-        self.month_label.config(text=self.current_date.strftime("%B"))
+        self.month_label.config(text=get_translated_month(self.current_date))
         self.year_label.config(text=self.current_date.strftime("%Y"))
         self.load_statistics(self.scrollable_frame)
